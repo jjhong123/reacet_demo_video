@@ -16,7 +16,10 @@ class App extends React.Component {
             }
         });
 
-        this.setState({ videos: response.data.items })
+        this.setState({
+            videos: response.data.items,
+            selectedVideo:response.data.items[0]
+        });
 
     };
 
@@ -32,13 +35,21 @@ class App extends React.Component {
                 <SearchBar
                     onFormSubmit={this.onTermSubmit} // 搜尋觸發
                 />
-                <VideoDetail
-                    video={this.state.selectedVideo}
-                />
-                <VideoList
-                    onVideoSelect={this.onVideoSelect} // 選擇視頻觸發
-                    videos={this.state.videos} // 傳遞Youtube api .
-                />
+                <div className="ui grid">
+                    <div className="ui row">
+                        <div className="sixteen wide mobile eleven wide computer column">
+                            <VideoDetail
+                                video={this.state.selectedVideo}
+                            />
+                        </div>
+                        <div className="sixteen wide mobile five wide computer column">
+                            <VideoList
+                                onVideoSelect={this.onVideoSelect} // 選擇視頻觸發
+                                videos={this.state.videos} // 傳遞Youtube api .
+                            />
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
