@@ -6,7 +6,9 @@ const VideoDetail = ({ video }) => {
         return <div>Loading...</div>
     }
 
-    return <div>{video.snippet.title}</div>
+    return (
+    <div>{video.snippet.title}</div>
+    )
 };
 
 export default VideoDetail;
